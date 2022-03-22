@@ -16,12 +16,11 @@ func main() {
 	r.Use(registry.LoggingMiddleWare)
 	//Module Handler
 	/*
-		s := r.PathPrefix("/terraform/modules/v1").SubRouter()
+		s := r.PathPrefix("/terraform/modules/v1").Subrouter()
 		s.Methods("GET")
 		s.HandleFunc("/{namespace}/{provider}/versions", VersionHandler)
 		s.HandleFunc("/{namespace}/{provider}/{version}/download", DownloadHandler)
 	*/
-
 	srv := &http.Server{
 		Handler:      r,
 		Addr:         "127.0.0.1:8000",
