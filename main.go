@@ -13,7 +13,7 @@ import (
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/.well-known/terraform.json", registry.ServiceDiscoveryHandler)
-
+	r.Use(registry.LoggingMiddleWare)
 	//Module Handler
 	/*
 		s := r.PathPrefix("/terraform/modules/v1").SubRouter()
