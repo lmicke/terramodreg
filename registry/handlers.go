@@ -15,5 +15,8 @@ func ServiceDiscoveryHandler(w http.ResponseWriter, r *http.Request) {
 		Modules: "/terraform/modules/v1/",
 	}
 	body, _ := json.Marshal(resp)
-	w.Write(body)
+	_, err := w.Write(body)
+	if err != nil {
+		w.WriteHeader(500)
+	}
 }
